@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'books',
+    'django_cron',
+    'token_fetcher',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +149,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL_TOKEN = 'token_fetcher.UserProfile'
+
+CRON_CLASSES = [
+    "token_fetcher.cron.UpdateTokenData",
+]
+
+#CRONJOBS = [
+#    ('*/30 * * * * *', 'token_fetcher.cron.update_token_data')
+#]
